@@ -44,16 +44,16 @@ public class PermutationsTest {
 		Set<String> combos = permutations.possibleCombinations("a");
 		
 		assertTrue(combos.size()==1);
-		assertTrue(combos.contains("A"));
+		assertTrue(combos.contains("a"));
 	}
 	
 	@Test
 	public void testPossibleCombinationsTwoLetters() {
 		Set<String> combos = permutations.possibleCombinations("ab");
 		
-		expectedResult.add("A");
-		expectedResult.add("B");
-		expectedResult.add("AB");
+		expectedResult.add("a");
+		expectedResult.add("b");
+		expectedResult.add("ab");
 		
 		assertTrue(combos.size()==3);
 		assertTrue(combos.containsAll(expectedResult));
@@ -63,13 +63,13 @@ public class PermutationsTest {
 	public void testPossibleCombinationsThreeLetters() {
 		Set<String> combos = permutations.possibleCombinations("bca");
 		
-		expectedResult.add("A");
-		expectedResult.add("B");
-		expectedResult.add("C");
-		expectedResult.add("AB");
-		expectedResult.add("AC");
-		expectedResult.add("BC");
-		expectedResult.add("ABC");
+		expectedResult.add("a");
+		expectedResult.add("b");
+		expectedResult.add("c");
+		expectedResult.add("ab");
+		expectedResult.add("ac");
+		expectedResult.add("bc");
+		expectedResult.add("abc");
 		
 		assertTrue(combos.size()==7);
 		assertTrue(combos.containsAll(expectedResult));
@@ -79,21 +79,21 @@ public class PermutationsTest {
 	public void testPossibleCombinationsFourLetters() {
 		Set<String> combos = permutations.possibleCombinations("dcba");
 		
-		expectedResult.add("A");
-		expectedResult.add("B");
-		expectedResult.add("C");
-		expectedResult.add("D");
-		expectedResult.add("AB");
-		expectedResult.add("AC");
-		expectedResult.add("AD");
-		expectedResult.add("BC");
-		expectedResult.add("BD");
-		expectedResult.add("CD");
-		expectedResult.add("ABC");
-		expectedResult.add("ABD");
-		expectedResult.add("ACD");
-		expectedResult.add("BCD");
-		expectedResult.add("ABCD");
+		expectedResult.add("a");
+		expectedResult.add("b");
+		expectedResult.add("c");
+		expectedResult.add("d");
+		expectedResult.add("ab");
+		expectedResult.add("ac");
+		expectedResult.add("ad");
+		expectedResult.add("bc");
+		expectedResult.add("bd");
+		expectedResult.add("cd");
+		expectedResult.add("abc");
+		expectedResult.add("abd");
+		expectedResult.add("acd");
+		expectedResult.add("bcd");
+		expectedResult.add("abcd");
 		
 		assertTrue(combos.size()==15);
 		assertTrue(combos.containsAll(expectedResult));

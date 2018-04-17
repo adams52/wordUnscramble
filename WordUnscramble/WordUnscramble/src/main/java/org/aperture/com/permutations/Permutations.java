@@ -11,7 +11,7 @@ public class Permutations {
 			return new HashSet<String>();
 		}
 		
-		String localLetters = letters.toUpperCase();
+		String localLetters = letters.toLowerCase();
 		
 		Set<String> combos = new HashSet<String>();
 		if (localLetters.length() == 1) {

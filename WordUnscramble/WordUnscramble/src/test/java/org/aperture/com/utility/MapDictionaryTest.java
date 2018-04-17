@@ -21,19 +21,19 @@ public class MapDictionaryTest {
 
 	@Test
 	public void testPopulateDictionary() {
-		expectedKeys.add("AA");
-		expectedKeys.add("AB");
-		expectedKeys.add("ABC");
-		expectedKeys.add("ABD");
+		expectedKeys.add("aa");
+		expectedKeys.add("ab");
+		expectedKeys.add("abc");
+		expectedKeys.add("abd");
 		
 		dictionary.populateDictionary("dictionaries/testWordList.txt");
 		
 		assertEquals(dictionary.getDictionary().keySet().size(), 4);
 		assertEquals(dictionary.getDictionary().keySet(), expectedKeys);
-		assertEquals(dictionary.getDictionary().get("AA").size(), 1);
-		assertEquals(dictionary.getDictionary().get("AB").size(), 1);
-		assertEquals(dictionary.getDictionary().get("ABC").size(), 1);
-		assertEquals(dictionary.getDictionary().get("ABD").size(), 2);
+		assertEquals(dictionary.getDictionary().get("aa").size(), 1);
+		assertEquals(dictionary.getDictionary().get("ab").size(), 1);
+		assertEquals(dictionary.getDictionary().get("abc").size(), 1);
+		assertEquals(dictionary.getDictionary().get("abd").size(), 2);
 	}
 
 }
