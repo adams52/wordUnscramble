@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Word Unscramble</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Word Unscramble</h1>
+	<form action="/wordUnscramble">
+		<div><label for="letters">Letters: </label><input type="text" id="letters" name="letters" th:value="${letters}" /></div>
+		<br />
+		<div><button type="submit">Submit</button></div>
+	</form>
+    
+    <div th:each="element : ${results}">
+    	<h2 th:text="${element.key} + ' letter words: '"></h2>
+    	<div th:each="word : ${element.value}">
+    		<div th:text="${word}"></div>
+    	</div>
+    </div>
+    
+    
+</body>
+</html>
