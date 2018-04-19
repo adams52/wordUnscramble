@@ -1,8 +1,7 @@
 package org.aperture.com.utility;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -26,19 +25,19 @@ public class WordsBySize {
 	 * @param letters
 	 * @return
 	 */
-	public Map<String, List<String>> getWordsBySize(String letters) {
+	public Map<String, Set<String>> getWordsBySize(String letters) {
 		dictionary.populateDictionary(DICTIONARY_ENABLE);
 		Set<String> combos = permutations.possibleCombinations(letters);
 		
 		
-		Map<String, List<String>> wordsBySize = new HashMap<String, List<String>>();
+		Map<String, Set<String>> wordsBySize = new HashMap<String, Set<String>>();
 		
 		for (String key: combos) {
-			List<String> words = dictionary.getDictionary().get(key);
+			Set<String> words = dictionary.getDictionary().get(key);
 			if (words != null) {
 				for (String word: words) {
 					if (wordsBySize.get("" + word.length()) == null) {
-						wordsBySize.put("" + word.length(), new ArrayList<String>());
+						wordsBySize.put("" + word.length(), new HashSet<String>());
 					}
 					wordsBySize.get("" + word.length()).add(word);
 				}

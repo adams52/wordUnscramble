@@ -1,11 +1,10 @@
 package org.aperture.com.utility;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -31,8 +30,8 @@ public class WordsBySizeTest {
 	private WordsBySize wordsBySize;
 	
 	private Set<String> expectedResults;
-	private List<String> wordList;
-	private Map<String, List<String>> results;
+	private Set<String> wordList;
+	private Map<String, Set<String>> results;
 	
 	@Before
 	public void setup() {
@@ -40,9 +39,9 @@ public class WordsBySizeTest {
 		expectedResults.add("a");
 		expectedResults.add("b");
 		
-		results = new HashMap<String, List<String>>();
+		results = new HashMap<String, Set<String>>();
 		
-		wordList = new ArrayList<String>();
+		wordList = new HashSet<String>();
 		wordList.add("a");
 		wordList.add("b");
 		
@@ -56,12 +55,12 @@ public class WordsBySizeTest {
 		Mockito.when(dictionary.getDictionary()).thenReturn(results);
 		Mockito.when(dictionary.getDictionary()).thenReturn(results);
 		
-		Map<String, List<String>> wordList = wordsBySize.getWordsBySize("abc");
+		Map<String, Set<String>> wordList = wordsBySize.getWordsBySize("abc");
 		
 		Mockito.verify(dictionary).populateDictionary(WordsBySize.DICTIONARY_ENABLE);
 		
 		
-		assertTrue(wordList.keySet().size()==1);
-		assertTrue(wordList.get("1").size()==4);
+		assertEquals(wordList.keySet().size(),1);
+		assertEquals(wordList.get("1").size(),2);
 	}
 }
