@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
 public class MapDictionary {
 	
 	private Map<String, List<String>> dictionary = new HashMap<String, List<String>>();
