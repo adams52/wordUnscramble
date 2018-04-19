@@ -1,7 +1,7 @@
 package org.aperture.com.controller;
 
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.aperture.com.utility.WordsBySize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +18,7 @@ public class HomeController {
 	
 	@GetMapping("/wordUnscramble")
 	public String home(@RequestParam(name="letters") String letters, Model model) {
-		Map<String, List<String>> results = wordsBySize.getWordsBySize(letters);
-//		Map<String, List<String>> results = new HashMap<String, List<String>>();
-//		List<String> a1 = new ArrayList<String>();
-//		a1.add("a");
-//		a1.add("b");
-//		a1.add("c");
-//		
-//		List<String> a2 = new ArrayList<String>();
-//		a2.add("aa");
-//		a2.add("bb");
-//		a2.add("cc");
-//		
-//		results.put("1", a1);
-//		results.put("2", a2);
+		Map<String, Set<String>> results = wordsBySize.getWordsBySize(letters);
 		
 		
 		model.addAttribute("letters", letters);
