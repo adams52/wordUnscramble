@@ -15,19 +15,16 @@ public class Permutations {
 		}
 		
 		String localLetters = letters.toLowerCase();
+		char[] array = localLetters.toCharArray();
+		Arrays.sort(array);
+		String sortedLetters = String.valueOf(array);
 		
 		Set<String> combos = new HashSet<String>();
-		if (localLetters.length() == 1) {
-			combos.add(localLetters);
+		if (sortedLetters.length() <= 2) {
+			combos.add(sortedLetters);
 			return combos;
 		}
 		
-		
-		char[] array = localLetters.toCharArray();
-		
-		Arrays.sort(array);
-		
-		String sortedLetters = String.valueOf(array);
 		combos.add(sortedLetters);
 		
 		StringBuilder newString;

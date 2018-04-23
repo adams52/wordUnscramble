@@ -51,11 +51,9 @@ public class PermutationsTest {
 	public void testPossibleCombinationsTwoLetters() {
 		Set<String> combos = permutations.possibleCombinations("ab");
 		
-		expectedResult.add("a");
-		expectedResult.add("b");
 		expectedResult.add("ab");
 		
-		assertTrue(combos.size()==3);
+		assertTrue(combos.size()==1);
 		assertTrue(combos.containsAll(expectedResult));
 	}
 	
@@ -63,15 +61,12 @@ public class PermutationsTest {
 	public void testPossibleCombinationsThreeLetters() {
 		Set<String> combos = permutations.possibleCombinations("bca");
 		
-		expectedResult.add("a");
-		expectedResult.add("b");
-		expectedResult.add("c");
 		expectedResult.add("ab");
 		expectedResult.add("ac");
 		expectedResult.add("bc");
 		expectedResult.add("abc");
 		
-		assertTrue(combos.size()==7);
+		assertTrue(combos.size()==4);
 		assertTrue(combos.containsAll(expectedResult));
 	}
 	
@@ -79,10 +74,6 @@ public class PermutationsTest {
 	public void testPossibleCombinationsFourLetters() {
 		Set<String> combos = permutations.possibleCombinations("dcba");
 		
-		expectedResult.add("a");
-		expectedResult.add("b");
-		expectedResult.add("c");
-		expectedResult.add("d");
 		expectedResult.add("ab");
 		expectedResult.add("ac");
 		expectedResult.add("ad");
@@ -95,7 +86,7 @@ public class PermutationsTest {
 		expectedResult.add("bcd");
 		expectedResult.add("abcd");
 		
-		assertTrue(combos.size()==15);
+		assertTrue(combos.size()==11);
 		assertTrue(combos.containsAll(expectedResult));
 	}
 
