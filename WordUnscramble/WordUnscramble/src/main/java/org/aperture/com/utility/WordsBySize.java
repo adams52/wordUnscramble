@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.aperture.com.permutations.Permutations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -14,10 +13,7 @@ public class WordsBySize {
 	
 	static String DICTIONARY_ENABLE = "dictionaries/enable.txt";
 	
-	@Autowired
 	private Permutations permutations;
-	
-	@Autowired
 	private MapDictionary dictionary;
 	
 	/**
