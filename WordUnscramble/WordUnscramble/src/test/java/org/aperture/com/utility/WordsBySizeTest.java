@@ -17,6 +17,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
+
 @RunWith(MockitoJUnitRunner.class)
 public class WordsBySizeTest {
 	
@@ -25,6 +28,12 @@ public class WordsBySizeTest {
 	
 	@Mock
 	private MapDictionary dictionary;
+	
+	@Mock
+	private Context context;
+	
+	@Mock
+	private LambdaLogger logger;
 	
 	@InjectMocks
 	private WordsBySize wordsBySize;
@@ -54,10 +63,12 @@ public class WordsBySizeTest {
 		Mockito.when(permutations.possibleCombinations(Mockito.anyString())).thenReturn(expectedResults);
 		Mockito.when(dictionary.getDictionary()).thenReturn(results);
 		Mockito.when(dictionary.getDictionary()).thenReturn(results);
+		Mockito.when(context.getLogger()).thenReturn(logger);
 		
-		Map<String, Set<String>> wordList = wordsBySize.getWordsBySize("abc");
+		Map<String, String> input = new HashMap<String, String>();
+		input.put("letters", "abc");
 		
-		Mockito.verify(dictionary).populateDictionary(WordsBySize.DICTIONARY_ENABLE);
+		Map<String, Set<String>> wordList = wordsBySize.getWordsBySize(input, context);
 		
 		
 		assertEquals(wordList.keySet().size(),1);

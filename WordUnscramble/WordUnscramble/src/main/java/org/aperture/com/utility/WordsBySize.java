@@ -6,24 +6,33 @@ import java.util.Map;
 import java.util.Set;
 
 import org.aperture.com.permutations.Permutations;
-import org.springframework.context.annotation.Configuration;
+import org.json.JSONObject;
 
-@Configuration
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
+
 public class WordsBySize {
 	
 	static String DICTIONARY_ENABLE = "dictionaries/enable.txt";
 	
-	private Permutations permutations;
-	private MapDictionary dictionary;
+	private Permutations permutations = new Permutations();
+	private MapDictionary dictionary = new MapDictionary();
+	
+	public WordsBySize() {
+		dictionary.populateDictionary(DICTIONARY_ENABLE);
+	}
+	
+	
 	
 	/**
 	 * Retrieves words by default dictionary (enable1)
 	 * @param letters
 	 * @return
 	 */
-	public Map<String, Set<String>> getWordsBySize(String letters) {
-		dictionary.populateDictionary(DICTIONARY_ENABLE);
-		Set<String> combos = permutations.possibleCombinations(letters);
+	public Map<String, Set<String>> getWordsBySize(Map<String, String> input, Context context) {
+		LambdaLogger logger = context.getLogger();
+		logger.log("!!! Input: " + input + " !!!");
+		Set<String> combos = permutations.possibleCombinations(input.get("letters"));
 		
 		
 		Map<String, Set<String>> wordsBySize = new HashMap<String, Set<String>>();
@@ -39,6 +48,10 @@ public class WordsBySize {
 				}
 			}
 		}
+		
+		JSONObject object = new JSONObject(wordsBySize);
+		
+		logger.log("!!! Output: " + wordsBySize + " !!!");
 		return wordsBySize;
 	}
 

@@ -7,14 +7,17 @@ import org.aperture.com.permutations.Permutations;
 import org.aperture.com.utility.MapDictionary;
 import org.aperture.com.utility.WordsBySize;
 import org.json.JSONObject;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class HomeController {
 	
+	@CrossOrigin(origins = "*")
 	@GetMapping("/wordUnscramble")
 	public String home(@RequestParam(name="letters") String letters, Model model) {
 		WordsBySize wordsBySize = new WordsBySize();
@@ -32,6 +35,6 @@ public class HomeController {
 		model.addAttribute("results", results);
 		
 		
-		return jsonObject.toString();
+		return "results";//jsonObject.toString();
 	}
 }
