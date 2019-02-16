@@ -24,9 +24,6 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 public class WordsBySizeTest {
 	
 	@Mock
-	private Permutations permutations;
-	
-	@Mock
 	private MapDictionary dictionary;
 	
 	@Mock
@@ -38,16 +35,11 @@ public class WordsBySizeTest {
 	@InjectMocks
 	private WordsBySize wordsBySize;
 	
-	private Set<String> expectedResults;
 	private Set<String> wordList;
 	private Map<String, Set<String>> results;
 	
 	@Before
 	public void setup() {
-		expectedResults = new HashSet<String>();
-		expectedResults.add("a");
-		expectedResults.add("b");
-		
 		results = new HashMap<String, Set<String>>();
 		
 		wordList = new HashSet<String>();
@@ -60,18 +52,18 @@ public class WordsBySizeTest {
 	
 	@Test
 	public void getWordsBySize() {
-		Mockito.when(permutations.possibleCombinations(Mockito.anyString())).thenReturn(expectedResults);
-		Mockito.when(dictionary.getDictionary()).thenReturn(results);
-		Mockito.when(dictionary.getDictionary()).thenReturn(results);
 		Mockito.when(context.getLogger()).thenReturn(logger);
 		
+		WordsBySize size = new WordsBySize();
+		
+		
 		Map<String, String> input = new HashMap<String, String>();
-		input.put("letters", "abc");
+		input.put("letters", "odg");
 		
-		Map<String, Set<String>> wordList = wordsBySize.getWordsBySize(input, context);
+		String results = size.getWordsBySize(input, context);
 		
+		String expectedResult = "{\"2\":[\"od\",\"go\",\"do\"],\"3\":[\"dog\",\"god\"]}";
 		
-		assertEquals(wordList.keySet().size(),1);
-		assertEquals(wordList.get("1").size(),2);
+		assertEquals(expectedResult, results);
 	}
 }
