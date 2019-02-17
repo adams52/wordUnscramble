@@ -3,8 +3,8 @@ package org.aperture.com.controller;
 import java.util.Map;
 import java.util.Set;
 
+import org.aperture.com.dictionary.MapDictionary;
 import org.aperture.com.permutations.Permutations;
-import org.aperture.com.utility.MapDictionary;
 import org.aperture.com.utility.WordsBySize;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;

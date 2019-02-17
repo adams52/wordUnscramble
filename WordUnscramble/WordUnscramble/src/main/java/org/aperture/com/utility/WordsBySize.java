@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.aperture.com.algorithms.Algorithm;
 import org.aperture.com.algorithms.MapAlgorithm;
+import org.aperture.com.dictionary.MapDictionary;
 import org.json.JSONObject;
 
 import com.amazonaws.services.lambda.runtime.Context;

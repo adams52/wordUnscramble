@@ -1,11 +1,12 @@
 package org.aperture.com.algorithms;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 import java.util.Set;
 
-import org.aperture.com.utility.MapDictionary;
+import org.aperture.com.dictionary.MapDictionary;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,5 +34,6 @@ public class PermutationAlgorithmTest {
 		Map<String, Set<String>> wordsBySizeMap = mapAlgo.getWordsBySize("asdfuipo", dictionary);
 		
 		assertEquals(wordsBySizeMap, wordsBySizePerm);
+		assertTrue(wordsBySizeMap.size() > 0);
 	}
 }

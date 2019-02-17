@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.aperture.com.dictionary.MapDictionary;
 import org.aperture.com.permutations.Permutations;
 import org.junit.Before;
 import org.junit.Test;

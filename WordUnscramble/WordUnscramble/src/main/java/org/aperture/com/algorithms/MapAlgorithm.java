@@ -5,7 +5,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.aperture.com.utility.MapDictionary;
+import org.aperture.com.dictionary.MapDictionary;
+import org.aperture.com.dictionary.WordList;
 
 public class MapAlgorithm implements Algorithm {
 
@@ -17,27 +18,27 @@ public class MapAlgorithm implements Algorithm {
 		/* 
 		 * Count each letter in the input, compare to count of letters in each word
 		 */
-		for (String key: dictionary.getDictionary().keySet()) {
-			Map<Character, Integer> keyLetters = getLetterCount(key);
+		for (String sortedLetters: dictionary.getDictionary().keySet()) {
+			WordList wordList = dictionary.getDictionary().get(sortedLetters);
 			boolean canMake = true;
-			for (Character c: keyLetters.keySet()) {
-				if (letterCount.getOrDefault(c, 0) < keyLetters.get(c)) {
+			for (Character c: wordList.getLetterCount().keySet()) {
+				if (letterCount.getOrDefault(c, 0) < wordList.getLetterCount().get(c)) {
 					canMake = false;
 				}
 			}
 			
 			if (canMake) {
-				if (wordsBySize.get("" + key.length()) == null) {
-					wordsBySize.put("" + key.length(), new HashSet<String>());
+				if (wordsBySize.get("" + sortedLetters.length()) == null) {
+					wordsBySize.put("" + sortedLetters.length(), new HashSet<String>());
 				}
-				wordsBySize.get("" + key.length()).addAll(dictionary.getDictionary().get(key));
+				wordsBySize.get("" + sortedLetters.length()).addAll(dictionary.getDictionary().get(sortedLetters).getWords());
 			}
 		}
 		
 		return wordsBySize;
 	}
 	
-	public Map<Character, Integer> getLetterCount(String letters) {
+	public static Map<Character, Integer> getLetterCount(String letters) {
 		Map<Character, Integer> letterCount = new HashMap<Character, Integer>();
 		
 		for (char c: letters.toCharArray()) {

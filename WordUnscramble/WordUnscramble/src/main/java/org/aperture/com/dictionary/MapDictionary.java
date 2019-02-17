@@ -1,16 +1,16 @@
-package org.aperture.com.utility;
+package org.aperture.com.dictionary;
 
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
+
+import org.aperture.com.algorithms.MapAlgorithm;
 
 public class MapDictionary {
 	
-	private Map<String, Set<String>> dictionary = new HashMap<String, Set<String>>();
+	private Map<String, WordList> dictionary = new HashMap<String, WordList>();
 	
 	public void populateDictionary(String fileLocation) {
 		InputStream in = MapDictionary.class.getClassLoader().getResourceAsStream(fileLocation);
@@ -24,18 +24,19 @@ public class MapDictionary {
 			Arrays.sort(array);
 			sortedLetters = String.valueOf(array);
 			if (getDictionary().get(sortedLetters)==null) {
-				getDictionary().put(sortedLetters,  new HashSet<String>());
+				getDictionary().put(sortedLetters,  new WordList());
 			}
 			getDictionary().get(sortedLetters).add(line);
+			getDictionary().get(sortedLetters).getLetterCount().putAll(MapAlgorithm.getLetterCount(sortedLetters));
 		}
 		s.close();
 	}
 
-	public Map<String, Set<String>> getDictionary() {
+	public Map<String, WordList> getDictionary() {
 		return dictionary;
 	}
 
-	public void setDictionary(Map<String, Set<String>> dictionary) {
+	public void setDictionary(Map<String, WordList> dictionary) {
 		this.dictionary = dictionary;
 	}
 }

@@ -3,7 +3,7 @@ package org.aperture.com.algorithms;
 import java.util.Map;
 import java.util.Set;
 
-import org.aperture.com.utility.MapDictionary;
+import org.aperture.com.dictionary.MapDictionary;
 
 public interface Algorithm {
 	

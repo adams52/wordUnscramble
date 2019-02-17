@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Map;
 
-import org.aperture.com.utility.MapDictionary;
+import org.aperture.com.dictionary.MapDictionary;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
