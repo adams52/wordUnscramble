@@ -2,12 +2,21 @@ package org.aperture.com.utility;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.aperture.com.dictionary.MapDictionary;
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MapDictionaryTest {
 	
@@ -17,7 +26,20 @@ public class MapDictionaryTest {
 	@Before
 	public void setup() {
 		dictionary = new MapDictionary();
+		dictionary.populateDictionary("dictionaries/enable.txt");
 		expectedKeys = new HashSet<String>();
+	}
+	
+	@Test
+	public void printDictionary() throws JsonGenerationException, JsonMappingException, IOException {
+		String fileLocation = "C:\\DEV\\gitrepos\\wordUnscramble\\WordUnscramble\\WordUnscramble\\src\\test\\resources\\dictionaries\\testJson.json";
+		ObjectMapper mapper = new ObjectMapper();
+//		OutputStream out = MapDictionaryTest.class.getClassLoader().getResourceAsStream(fileLocation);
+//		mapper.writeValue(new File(fileLocation), dictionary);
+		InputStream in = MapDictionaryTest.class.getClassLoader().getResourceAsStream("dictionaries/testJson.json");
+		MapDictionary jsonDict = mapper.readValue(in, MapDictionary.class);
+		assertEquals(jsonDict.getDictionary().keySet(), dictionary.getDictionary().keySet());
+		in.close();
 	}
 
 	@Test
@@ -26,8 +48,6 @@ public class MapDictionaryTest {
 		expectedKeys.add("ab");
 		expectedKeys.add("abc");
 		expectedKeys.add("abd");
-		
-		dictionary.populateDictionary("dictionaries/testWordList.txt");
 		
 		assertEquals(dictionary.getDictionary().keySet().size(), 4);
 		assertEquals(dictionary.getDictionary().keySet(), expectedKeys);

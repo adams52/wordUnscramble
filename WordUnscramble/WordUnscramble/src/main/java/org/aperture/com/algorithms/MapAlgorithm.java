@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.aperture.com.dictionary.MapDictionary;
-import org.aperture.com.dictionary.WordList;
+import org.aperture.com.dictionary.WordInfo;
 
 public class MapAlgorithm implements Algorithm {
 
@@ -19,7 +19,7 @@ public class MapAlgorithm implements Algorithm {
 		 * Count each letter in the input, compare to count of letters in each word
 		 */
 		for (String sortedLetters: dictionary.getDictionary().keySet()) {
-			WordList wordList = dictionary.getDictionary().get(sortedLetters);
+			WordInfo wordList = dictionary.getDictionary().get(sortedLetters);
 			boolean canMake = true;
 			for (Character c: wordList.getLetterCount().keySet()) {
 				if (letterCount.getOrDefault(c, 0) < wordList.getLetterCount().get(c)) {

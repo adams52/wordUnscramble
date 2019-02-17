@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.aperture.com.dictionary.MapDictionary;
-import org.aperture.com.dictionary.WordList;
+import org.aperture.com.dictionary.WordInfo;
 import org.aperture.com.permutations.Permutations;
 
 public class PermutationAlgorithm implements Algorithm {
@@ -19,7 +19,7 @@ public class PermutationAlgorithm implements Algorithm {
 		Map<String, Set<String>> wordsBySize = new HashMap<String, Set<String>>();
 		
 		for (String key: combos) {
-			WordList words = dictionary.getDictionary().get(key);
+			WordInfo words = dictionary.getDictionary().get(key);
 			if (words != null) {
 				for (String word: words.getWords()) {
 					if (wordsBySize.get("" + word.length()) == null) {
