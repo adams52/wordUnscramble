@@ -23,19 +23,19 @@ public class MapAlgorithmTest {
 	@Before
 	public void setup() {
 		dictionary = new MapDictionary();
-		dictionary.populateDictionary(DICTIONARY_ENABLE);
 		algo = new MapAlgorithm();
 	}
 	
 	@Test
 	public void getWordsBySize() {
+		dictionary.populateDictionary(DICTIONARY_ENABLE);
 		String expectedResults = "{2=[od, go, do], 3=[dog, god]}";
 		assertEquals(expectedResults, algo.getWordsBySize("odg", dictionary).toString());
 	}
 	
 	@Test
 	public void getLetterCountTest() {
-		Map<Character, Integer> letterCount = algo.getLetterCount("afsdfff");
+		Map<Character, Integer> letterCount = MapAlgorithm.getLetterCount("afsdfff");
 		assertEquals(letterCount.get('a'), (Integer)1);
 		assertEquals(letterCount.get('s'), (Integer)1);
 		assertEquals(letterCount.get('d'), (Integer)1);

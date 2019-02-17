@@ -25,11 +25,11 @@ public class PermutationAlgorithmTest {
 	@Before
 	public void setup() {
 		dictionary = new MapDictionary();
-		dictionary.populateDictionary(DICTIONARY_ENABLE);
 	}
 	
 	@Test
 	public void compareAlgorithms() {
+		dictionary.populateDictionary(DICTIONARY_ENABLE);
 		Map<String, Set<String>> wordsBySizePerm = permAlgo.getWordsBySize("asdfuipo", dictionary);
 		Map<String, Set<String>> wordsBySizeMap = mapAlgo.getWordsBySize("asdfuipo", dictionary);
 		

@@ -15,10 +15,11 @@ public class WordsBySize {
 	
 	static String DICTIONARY_ENABLE = "dictionaries/enable.txt";
 	
-	private MapDictionary dictionary = new MapDictionary();
+	private MapDictionary dictionary;
 	private Algorithm algorithm;
 	
 	public WordsBySize() {
+		dictionary = new MapDictionary();
 		dictionary.populateDictionary(DICTIONARY_ENABLE);
 		algorithm = new MapAlgorithm();
 	}

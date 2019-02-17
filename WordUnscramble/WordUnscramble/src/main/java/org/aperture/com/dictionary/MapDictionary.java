@@ -1,6 +1,5 @@
 package org.aperture.com.dictionary;
 
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,14 +13,13 @@ public class MapDictionary {
 	private Map<String, WordInfo> dictionary = new HashMap<String, WordInfo>();
 	
 	public void populateDictionary(String fileLocation) {
-		InputStream in = MapDictionary.class.getClassLoader().getResourceAsStream(fileLocation);
-		Scanner s = new Scanner(in);
-		String line = null;
-		while (s.hasNextLine()) {
-			line = s.nextLine();
-			addWord(line);
+		try (Scanner s = new Scanner(MapDictionary.class.getClassLoader().getResourceAsStream(fileLocation))){
+			String line = null;
+			while (s.hasNextLine()) {
+				line = s.nextLine();
+				addWord(line);
+			}
 		}
-		s.close();
 	}
 	
 	public void addWord(String word) {

@@ -1,7 +1,6 @@
 package org.aperture.com.utility;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,7 +8,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.aperture.com.dictionary.MapDictionary;
-import org.aperture.com.permutations.Permutations;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
