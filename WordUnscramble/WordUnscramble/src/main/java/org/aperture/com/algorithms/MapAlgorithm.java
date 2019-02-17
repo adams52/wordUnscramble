@@ -19,11 +19,12 @@ public class MapAlgorithm implements Algorithm {
 		 * Count each letter in the input, compare to count of letters in each word
 		 */
 		for (String sortedLetters: dictionary.getDictionary().keySet()) {
-			WordInfo wordList = dictionary.getDictionary().get(sortedLetters);
+			WordInfo wordList = dictionary.getWordInfo(sortedLetters);
 			boolean canMake = true;
 			for (Character c: wordList.getLetterCount().keySet()) {
 				if (letterCount.getOrDefault(c, 0) < wordList.getLetterCount().get(c)) {
 					canMake = false;
+					break;
 				}
 			}
 			
@@ -31,7 +32,7 @@ public class MapAlgorithm implements Algorithm {
 				if (wordsBySize.get("" + sortedLetters.length()) == null) {
 					wordsBySize.put("" + sortedLetters.length(), new HashSet<String>());
 				}
-				wordsBySize.get("" + sortedLetters.length()).addAll(dictionary.getDictionary().get(sortedLetters).getWords());
+				wordsBySize.get("" + sortedLetters.length()).addAll(dictionary.getWordList(sortedLetters));
 			}
 		}
 		

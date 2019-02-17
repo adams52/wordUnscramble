@@ -38,6 +38,10 @@ public class MapDictionary {
 		
 	}
 	
+	public WordInfo getWordInfo(String sortedKey) {
+		return dictionary.get(sortedKey);
+	}
+	
 	public Set<String> getWordList(String sortedKey) {
 		return dictionary.get(sortedKey).getWords();
 	}
